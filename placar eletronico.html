@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Placar</title>
+  <style>
+    body {
+      background-color: black;
+    }
+
+    @font-face {
+      font-family: "DS-DIGIT";
+      src: url("DS-DIGIB.ttf") format("truetype");
+    }
+
+    .score {
+      font-size: 240px;
+      text-align: center;
+      margin-top: 100px;
+      color: #4CAF50;
+      text-shadow: 2px 2px #ddd;
+      font-family: "DS-DIGIT";
+    }
+
+    .winner {
+      font-size: 60px;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .gif {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      background-color: black;
+      opacity: 0.8;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+    }
+
+    .button-container button {
+      font-size: 5px;
+      padding: 2px 5px;
+      margin: 0 10px;
+    }
+  </style>
+  
+</head>
+<body>
+  <div class="score">0 X 0</div>
+  <div class="winner"></div>
+  <div class="button-container">
+    <button id="team1Button"></button>
+    <button id="team2Button"></button>
+  </div>
+  <img src="" class="gif" style="display:none	;">
+  <script>
+    var score1 = 0,
+        score2 = 0;
+
+    function showWinner(team) {
+      var winnerText = "",
+          gifUrl = "";
+
+      if (team == 1) {
+        winnerText = "Time 1 ganhou!";
+        gifUrl = "https://media.tenor.com/-Yf9G_sGZ-8AAAAC/youre-a-winner-winner.gif";
+      } else if (team == 2) {
+        winnerText = "Time 2 ganhou!";
+        gifUrl = "https://media.tenor.com/-Yf9G_sGZ-8AAAAC/youre-a-winner-winner.gif";
+      }
+
+      document.querySelector(".winner").innerHTML = winnerText;
+      document.querySelector(".gif").src = gifUrl;
+      document.querySelector(".gif").style.display = "block";
+
+      setTimeout(function() {
+        document.location.reload();
+      }, 5000);
+    }
+
+    function updateScore(team) {
+      if (team == 1) {
+        score1++;
+      } else if (team == 2) {
+        score2++;
+      }
+
+      document.querySelector(".score").innerHTML = score1 + " X " + score2;
+
+      if (score1 >= 7) {
+        showWinner(1);
+      } else if (score2 >= 7) {
+        showWinner(2);
+      }
+    }
+
+    document.querySelector("#team1Button").addEventListener("click", function() {
+      updateScore(1);
+    });
+
+    // Adicionando evento de tecla pressionada
+        document.addEventListener("keydown", function(event) {
+        
+          if (event.keyCode ===37) { // Código da tecla esquerda
+          
+              team1Button.click();
+          
+          }
+        
+        });
+    
+    // Adicionando evento de tecla pressionada
+        document.addEventListener("keydown", function(event) {
+        
+          if (event.keyCode ===39) { // Código da tecla esquerda
+          
+              team2Button.click();
+          
+          }
+        
+        });
+		
+		// Adicionando evento de tecla pressionada
+document.addEventListener("keydown", function(event) {
+    if (event.keyCode === 40) { // Código da tecla para baixo
+        document.location.reload();
+    }
+});
+
+    document.querySelector("#team2Button").addEventListener("click", function() {
+      updateScore(2);
+    });
+  </script>
+</body>
+</html>
