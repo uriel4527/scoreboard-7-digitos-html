@@ -1,2 +1,2 @@
 # scoreboard-7-digitos-html
-Placar eletronico
+Placar eletronico da airhockey
