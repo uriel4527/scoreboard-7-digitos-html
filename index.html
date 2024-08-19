@@ -5,21 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Print Image Page</title>
     <style>
+        .image-container {
+            position: relative;
+            display: inline-block;
+        }
+
         .welcome-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             color: blue;
             font-size: 24px;
             font-family: Arial, sans-serif;
-            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.7); /* Fundo semi-transparente */
+            padding: 5px 10px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
         }
     </style>
 </head>
 <body style="text-align: center;">
 
-    <!-- Mensagem de Bem-vindo -->
-    <div class="welcome-message">Bem-vindo</div>
-
-    <!-- Imagem -->
-    <img src="https://via.placeholder.com/300" alt="Imagem de Exemplo" style="max-width: 100%; height: auto;">
+    <!-- Container da Imagem com a Mensagem -->
+    <div class="image-container">
+        <img src="https://via.placeholder.com/300" alt="Imagem de Exemplo">
+        <div class="welcome-message">Bem-vindo</div>
+    </div>
 
     <!-- Botão para Imprimir -->
     <br><br>
@@ -27,4 +42,3 @@
 
 </body>
 </html>
-
